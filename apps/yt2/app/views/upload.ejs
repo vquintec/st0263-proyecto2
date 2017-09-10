@@ -9,7 +9,7 @@
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4"><%- title %> <%- user.username %><small></small></h1>
+  <h1 class="my-4"><%- title %><small></small></h1>
 
   <form action="<%- baseUrl %>videos/upload" method="post" class="form-horizontal">
     <div class="form-group row">
@@ -77,9 +77,9 @@
   <!-- /.container -->
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="/js/upload.js"></script>
+<script src="<%- baseUrl %>js/jquery-2.2.0.min.js"></script>
+<script src="<%- baseUrl %>js/bootstrap-3.3.6.min.js"></script>
+<script src="<%- baseUrl %>js/upload.js"></script>
 
 </body>
 

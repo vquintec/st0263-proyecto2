@@ -27,9 +27,8 @@ $('#up').on('click', function(){
             url: '/videos/uploadf',
             type: 'POST',
             data: formData,
-            cache: false,
-            contentType: false,
             processData: false,
+            contentType: false,
             success: function(data){
                 console.log('upload successful!\n' + data);
                 $.ajax({
@@ -45,6 +44,7 @@ $('#up').on('click', function(){
                     },
                     success: function(res) {
                         console.log(res);
+                        //alert(res);
                         window.location.replace("/videos/me");
                     },
                     error: function(data){
