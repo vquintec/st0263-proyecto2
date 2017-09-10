@@ -4,10 +4,55 @@ var express = require('express'),
   Video = mongoose.model('Video'),
   User = mongoose.model('User');
 
+var path = require('path');
+var formidable = require('formidable');
+var fs = require('fs');
+
 var config = require('../../config/config');
 module.exports = function (app) {
   app.use('/videos', router);
 };
+
+router.get('/indexup', function(req, res){
+    res.render('fupload', {
+        title: 'Upload video',
+        baseUrl: config.baseUrl,
+    });
+});
+// Tomado de https://coligo.io/building-ajax-file-uploader-with-node/
+router.post('/uploadf', function(req, res){
+
+    // create an incoming form object
+    var form = new formidable.IncomingForm();
+
+    // specify that we want to allow the user to upload multiple files in a single request
+    form.multiples = true;
+
+    // store all uploads in the /uploads directory
+    //form.uploadDir = path.join(__dirname, '/uploads');
+    form.uploadDir = '/nfs1/uploads';
+    console.log(form.uploadDir);
+
+    // every time a file has been uploaded successfully,
+    // rename it to it's orignal name
+    form.on('file', function(field, file) {
+        fs.rename(file.path, path.join(form.uploadDir, file.name));
+    });
+
+    // log any errors that occur
+    form.on('error', function(err) {
+        console.log('An error has occured: \n' + err);
+    });
+
+    // once all the files have been uploaded, send a response to the client
+    form.on('end', function() {
+        res.end('success');
+    });
+
+    // parse the incoming request containing the form data
+    form.parse(req);
+
+});
 
 router.get('/', function (req, res, next) {
   Video.find({ privacy: 'Public'})
@@ -57,7 +102,8 @@ router.get('/upload', function (req, res, next) {
 
   res.render('upload', {
     title: 'Upload video',
-    baseUrl: config.baseUrl
+    baseUrl: config.baseUrl,
+    user: req.user
   });
 });
 
@@ -66,19 +112,39 @@ router.post('/upload', function (req, res, next) {
   video = new Video({
     title: req.body.title,
     description: req.body.description,
+    file_name: req.body.file_name,
     owner: req.user._id,
     privacy: req.body.privacy,
-    category: req.body.category,
+    category:  req.body.category,
     tags: req.body.tags
   });
 
   Video.create(video, function (err, video) {
     if(err)
       res.send(err);
-    res.redirect(config.baseUrl + 'videos/me');
+    res.end("good");
   });
-
+    console.log(video);
 });
+
+/*router.post('/upload', function (req, res, next) {
+    console.log(req.body);
+    video = new Video({
+        title: req.body.title,
+        description: req.body.description,
+        owner: req.user._id,
+        privacy: req.body.privacy,
+        category: req.body.category,
+        tags: req.body.tags
+    });
+
+    Video.create(video, function (err, video) {
+        if(err)
+            res.send(err);
+        res.redirect(config.baseUrl + 'videos/me');
+    });
+
+});*/
 
 router.get('/me', function (req, res, next) {
   userInfo = {

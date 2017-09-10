@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 var VideoSchema = new Schema({
   title: String,
   description: String,
+  file_name: String,
   users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   owner: { type: Schema.Types.ObjectId, ref: 'User' },
   privacy: String,

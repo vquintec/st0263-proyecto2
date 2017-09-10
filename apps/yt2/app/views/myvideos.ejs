@@ -10,17 +10,18 @@
 
   function deleteRequest(url) {
     $.ajax({
-      url: url,
-      type: 'DELETE',
-      success: function(res) {
-        console.log(res);
-        alert(res);
-        location.reload();
-      },
-      error: function(data){
-        alert("fail " + data);
+        url: url,
+        type: 'DELETE',
+        data: {'topic': topic},
+        success: function(res) {
+            console.log(res);
+            alert(res);
+            location.reload();
+        },
+        error: function(data){
+            alert("fail " + data);
 
-      }
+        }
     });
   }
 

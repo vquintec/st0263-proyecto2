@@ -1,10 +1,15 @@
 <% include header %>
 
+<script>
+  var name1 = '<%- user.username %>';
+  console.log(name1);
+</script>
+
 <!-- Page Content -->
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4"><%- title %><small></small></h1>
+  <h1 class="my-4"><%- title %> <%- user.username %><small></small></h1>
 
   <form action="<%- baseUrl %>videos/upload" method="post" class="form-horizontal">
     <div class="form-group row">
@@ -42,7 +47,19 @@
       </div>
     </div>
     <div class="form-group row">
-      <button class="col-lg-2 col-md-4 col-sm-6 btn btn-primary">Upload</button>
+        <!-- <button class="btn btn-lg upload-btn col-lg-2 col-sm-2" type="button">Choose File</button> -->
+        <div class="col-lg-3 col-sm-4">
+          <input id="upload-input" type="file" name="uploads[]" multiple="multiple">
+        </div>
+
+        <div class="progress col-lg-5 col-sm-8">
+          <div class="progress-bar" role="progressbar"></div>
+        </div>
+
+    </div>
+    <div class="form-group row">
+      <!--<button class="col-lg-2 col-md-4 col-sm-6 btn btn-primary">Upload</button>-->
+      <p class="col-lg-2 col-md-4 col-sm-6 btn btn-primary" id="up">Upload</p>
     </div>
 
   </form>
@@ -52,5 +69,19 @@
 <!-- /.container -->
 
 
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; vquinte3 2017</p>
+  </div>
+  <!-- /.container -->
+</footer>
 
-<% include footer %>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/js/upload.js"></script>
+
+</body>
+
+</html>
+

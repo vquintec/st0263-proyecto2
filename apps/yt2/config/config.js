@@ -8,10 +8,10 @@ var config = {
     ip: "localhost",
     root: rootPath,
     app: {
-      name: 'st0263-proyecto1-vquinte3'
+      name: 'st0263-proyecto2'
     },
     port: process.env.PORT || 3003,
-    db: 'mongodb://localhost/st0263-proyecto1-vquinte3-development'
+    db: 'mongodb://localhost/st0263-proyecto2-development'
   },
 
   test: {
@@ -19,10 +19,10 @@ var config = {
     ip: "10.131.137.188",
     root: rootPath,
     app: {
-      name: 'st0263-proyecto1-vquinte3'
+      name: 'st0263-proyecto2'
     },
     port: process.env.PORT || 3003,
-    db: 'mongodb://localhost/st0263-proyecto1-vquinte3-test'
+    db: 'mongodb://localhost/st0263-proyecto2-test'
   },
 
   production: {
@@ -30,7 +30,7 @@ var config = {
     ip: "10.131.137.188",
     root: rootPath,
     app: {
-      name: 'st0263-proyecto1-vquinte3'
+      name: 'st0263-proyecto2'
     },
     port: process.env.PORT || 5000,
     db: 'mongodb://vquinte3:lenovo12@ds133670.mlab.com:33670/yt2'
