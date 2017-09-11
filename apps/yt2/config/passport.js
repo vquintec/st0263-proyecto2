@@ -45,7 +45,7 @@ module.exports = function (app) {
   passport.use(new GoogleStrategy({
     clientID: '328457622075-36bqle48ai28v5ettjnrsq2d8ng7delo.apps.googleusercontent.com',
     clientSecret: 'nhoyKEExqq8AfB5TI-GDPnVE',
-    callbackURL: "http://localhost:3003/auth/google/callback"
+    callbackURL: "http://localhost:3003/auth/google/callback" || "http://proyecto22.dis.eafit.edu.co/auth/google/callback"
   },
   function (accessToken, refreshToken, profile, done) {
     console.log(profile);
