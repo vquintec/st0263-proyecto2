@@ -1,10 +1,10 @@
 **NodeJS proyecto2**
 
-By:
-Valentín Quintero Castrillón – [*vquinte3@eafit.edu.co*](mailto:vquinte3@eafit.edu.co)
-Christian Londoño Cañas – [*clondo46@eafit.edu.co*](mailto:clondo46@eafit.edu.co)
-Juan Carlos Estrada Alvarez – [*jestra52@eafit.edu.co*](mailto:jestra52@eafit.edu.co)
-Geralin Fernandez Bedoya – [*gfernan6@eafit.edu.co*](mailto:gfernan6@eafit.edu.co)
+By:  
+Valentín Quintero Castrillón – [*vquinte3@eafit.edu.co*](mailto:vquinte3@eafit.edu.co)  
+Christian Londoño Cañas – [*clondo46@eafit.edu.co*](mailto:clondo46@eafit.edu.co)  
+Juan Carlos Estrada Alvarez – [*jestra52@eafit.edu.co*](mailto:jestra52@eafit.edu.co)  
+Geralin Fernandez Bedoya – [*gfernan6@eafit.edu.co*](mailto:gfernan6@eafit.edu.co)  
 
 **Descripción de aplicación**
 
