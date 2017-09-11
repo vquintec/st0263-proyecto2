@@ -72,3 +72,14 @@ router.get('/logout', function (req, res) {
   req.logout();
   res.redirect(config.baseUrl + 'videos');
 });
+
+// SSO
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+
+router.get('/auth/google/callback', passport.authenticate('google', { 
+  failureRedirect: '/login' 
+}), function (req, res) {
+  console.log('GOOGLE AUTH SUCCESSFUL!');
+  //console.log(req);
+  res.redirect('/');
+});

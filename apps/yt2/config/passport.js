@@ -1,14 +1,15 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
+// Para SSO
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 var mongoose = require('mongoose'),
   User = mongoose.model('User');
 
 module.exports = function (app) {
   app.use(passport.initialize());
   app.use(passport.session());
-
-
 
   passport.serializeUser(function (user, done) {
     done(null, user);
@@ -39,5 +40,37 @@ module.exports = function (app) {
 
     }
   ));
+
+  // SSO strategy
+  passport.use(new GoogleStrategy({
+    clientID: '328457622075-36bqle48ai28v5ettjnrsq2d8ng7delo.apps.googleusercontent.com',
+    clientSecret: 'nhoyKEExqq8AfB5TI-GDPnVE',
+    callbackURL: "http://localhost:3003/auth/google/callback"
+  },
+  function (accessToken, refreshToken, profile, done) {
+    console.log(profile);
+
+    User.findOne({'google.id': profile.id}, function(err, user){
+      if(err)
+        return done(err);
+      if(user)
+        return done(null, user);
+      else {
+        
+        var newUser = new User();
+        newUser.google.id = profile.id;
+        newUser.google.token = accessToken;
+        newUser.google.name = profile.displayName;
+        //newUser.google.email = profile.emails[0].value;
+
+        newUser.save(function(err){
+          if(err)
+            throw err;
+          return done(null, newUser);
+        })
+        console.log(profile);
+      }
+    });
+  }));
 
 };

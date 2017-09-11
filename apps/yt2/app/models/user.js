@@ -6,9 +6,13 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
   name: String,
   lastname: String,
-  username: {type: String, unique: true, required: true},
+  username: {type: String, unique: true/*, required: true*/},
   password: String,
-
+  google: {
+		id: String,
+		token: String,
+		name: String
+	}
 });
 
 UserSchema.virtual('date')
