@@ -1,5 +1,6 @@
 # Configuración realizada
 Se configuran los nfs servers/clients, con sus respectiva configuración de firewall.
+
 NFS SERVER 1 ---> `10.131.137.164`
 NFS SERVER 2 ---> `10.131.137.224`
 
